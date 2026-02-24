@@ -20,7 +20,6 @@ public partial class MainForm : Form
     private const int DWMWA_CAPTION_COLOR = 35;
     private const int DWMWA_TEXT_COLOR = 36;
     private WebView2 view;
-    private DiscordRpcClient? client;
     private const string cai = "https://character.ai";
 
     public static void SetDarkTitleBar(Form form)
@@ -57,14 +56,6 @@ public partial class MainForm : Form
 #endif
         return;
     }
-    public void SetPresence(string state) {
-        client = new DiscordRpcClient("1430423027325075606");
-        client.SetPresence(new RichPresence()
-        {
-            Details = "Chatting",
-            State = state
-        });
-    }
     private async void InitializeMain(object sender, EventArgs e)
     {
         try
@@ -90,7 +81,6 @@ public partial class MainForm : Form
 
             view.CoreWebView2.Navigate(cai);
             DebugMode();
-            SetPresence("character ai ceo give me API access");
 
             /*
             view.CoreWebView2.NavigationCompleted += (s, ev) =>
